@@ -1,0 +1,59 @@
+<section class="vh-100" style="background-color: #242020;">
+  <div class="container py-5 h-50">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-lg-9 col-xl-7">
+        <div class="card rounded-3" style="background-color: rgb(101, 24, 173);">
+          <div class="card-body p-4">
+
+            <h4 class="text-center my-3 pb-3" style="color: aliceblue;">To Do App</h4>
+
+            <form [formGroup]="formValue"
+              class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2 rounded-3">
+              <div class="col-12">
+                <div data-mdb-input-init class="form-outline">
+                  <input type="text" id="form1" class="form-control" #newTask formControlName="newTask"
+                    placeholder="Enter New Task" />
+                </div>
+              </div>
+
+              <div class="col-12">
+                <button type="button" (click)="addTask(newTask.value)" data-mdb-button-init data-mdb-ripple-init
+                  class="btn btn-primary">Save</button>
+              </div>
+
+            <!-- </form> -->
+
+            <table class="table mb-4" style="border: 1px ; border-radius: 50px;">
+              <thead>
+                <tr>
+                  <th scope="col">No.</th>
+                  <th scope="col">Todo item</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+
+              <tbody class="rounded-3">
+                <tr *ngFor="let todoItem of getData ; let i = index ">
+
+                  <th> {{i +1}} </th>
+                  <td [style.textDecoration]="todoItem.completed ? 'line-through' : 'none'"> {{todoItem.task}} </td>
+                  <td>{{todoItem.completed}}</td>
+                  <td>
+                    <button type="button" (click)="deleteTask(todoItem.id)" data-mdb-button-init data-mdb-ripple-init
+                      class="btn btn-danger">Delete</button>
+                    <button type="button" (click)="toggleTask(todoItem.id ,getData)" data-mdb-button-init
+                      data-mdb-ripple-init class="btn btn-success ms-1">Finished</button>
+
+                  </td>
+                </tr>
+              </tbody>
+
+            </table>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
