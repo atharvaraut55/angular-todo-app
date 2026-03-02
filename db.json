@@ -1,7 +1,29 @@
 {
-  "posts": [],
+  "posts": [
+    {
+      "id": "1772435877185",
+      "task": "bello",
+      "completed": true
+    },
+    {
+      "id": "1772435992725",
+      "task": "hi",
+      "completed": true
+    },
+    {
+      "id": "1772435995890",
+      "task": "as",
+      "completed": true
+    },
+    {
+      "id": "1772437244748",
+      "task": "sada",
+      "completed": false
+    }
+  ],
   "comments": [],
   "profile": {
     "name": "typicode"
-  }
+  },
+  "$schema": "./node_modules/json-server/schema.json"
 }

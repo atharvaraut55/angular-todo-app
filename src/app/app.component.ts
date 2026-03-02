@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   newTask: string = '';
   formValue!: FormGroup;
   isDataLoaded = true;
+  savebtn = document.getElementById('save-btn') as HTMLButtonElement;
 
   constructor(private Api: ApiService, private formBL: FormBuilder,
     private router: Router) { }
@@ -22,6 +23,7 @@ export class AppComponent implements OnInit {
 
   reloadPage(): void {
     window.location.reload();
+    this.savebtn.focus();
   }
 
   addTask(value: any) {
@@ -42,6 +44,7 @@ export class AppComponent implements OnInit {
         // confirm("task is added")
         // alert("Task is added");
       });
+
 
       this.reloadPage();
     }
