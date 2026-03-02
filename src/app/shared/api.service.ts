@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, ObservedValueOf } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ResTodo, Todo } from '../Todo';
 
 @Injectable({
@@ -8,23 +8,23 @@ import { ResTodo, Todo } from '../Todo';
 })
 export class ApiService {
 
-  apiUrl = 'http://localhost:3000/posts'
+  private apiUrl = '/api/posts';
 
   constructor(private http: HttpClient) { }
 
-  async getTask(): Promise<Observable<ResTodo>>{
-    return await this.http.get<ResTodo>(this.apiUrl)
+  getTask(): Observable<ResTodo> {
+    return this.http.get<ResTodo>(this.apiUrl);
   }
 
-  postdata(data: any): Observable<Todo>{
-    return this.http.post<Todo>(this.apiUrl, data)
+  postdata(data: Todo): Observable<Todo> {
+    return this.http.post<Todo>(this.apiUrl, data);
   }
 
-  deleteTask(id: string){
-    return this.http.delete<Todo>("http://localhost:3000/posts/"+id)
+  deleteTask(id: string): Observable<Todo> {
+    return this.http.delete<Todo>(`${this.apiUrl}/${id}`);
   }
 
-  toggle(id: any, Taskbody: any){
-    return this.http.put<Todo>(this.apiUrl+"/"+ id, Taskbody)
+  toggle(id: string, taskBody: Todo): Observable<Todo> {
+    return this.http.put<Todo>(`${this.apiUrl}/${id}`, taskBody);
   }
 }

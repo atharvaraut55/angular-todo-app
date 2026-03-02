@@ -1,0 +1,11 @@
+[build]
+command = "ng build"
+publish = "dist/routinf-project"
+
+[functions]
+directory = "netlify/functions"
+
+[[redirects]]
+from = "/api/*"
+to = "/.netlify/functions/api/:splat"
+status = 200
